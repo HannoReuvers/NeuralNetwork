@@ -1,5 +1,5 @@
 function [T, X, y, yOneHot] = ReadHRInitialsData(DataType)
-%% DESCRIPTION: Initialize W and b for fully-connected neural network
+%% DESCRIPTION: Read data from SQL file
 %---INPUT VARIABLE(S)---
 %   (1) DataType: Read 'train', 'valid', or 'test' data
 %---OUTPUT VARIABLE(S)---
@@ -19,7 +19,7 @@ function [T, X, y, yOneHot] = ReadHRInitialsData(DataType)
         error('Unknown data type to read, please select train, dev or test');
     end
 
-    % Read training data from SQLite
+    % Read data using SQLite
     sqlfile = fullfile('../HRInitialsClassificationData/', sqlfilename);
     conn = sqlite(sqlfile);
     data = fetch(conn, 'SELECT * FROM Data');
