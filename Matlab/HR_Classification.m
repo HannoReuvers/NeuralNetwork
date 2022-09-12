@@ -1,4 +1,4 @@
-clc; clear variables; close all;
+ clc ; clear variables; close all;
 addpath("./functions")
 rng(1234)
 
