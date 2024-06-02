@@ -64,11 +64,17 @@ CostListValid = NaN(MaxEpochs, 1);
 
 for epoch = 1:MaxEpochs
 
+    % Print progress
+    if (mod(epoch, 100)==0)
+        % Inform user
+        fprintf('\t\t Sub-Iteration %4d of %4d\n', epoch, MaxEpochs);
+        fprintf('Training cost in epoch %d: %f\n', epoch, costTrain)
+    end
+
     % Forward propagation
     [costTrain, a, z] = Prop_Forward(Xtrain, yOneHottrain, W, b, FunctionList);
     [costValid, ~, ~] = Prop_Forward(Xvalid, yOneHotvalid, W, b, FunctionList);
-    % Inform user
-    fprintf('Training cost in epoch %d: %f\n', epoch, costTrain)
+    
     % Save results
     CostListTrain(epoch) = costTrain;
     CostListValid(epoch) = costValid;
